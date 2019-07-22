@@ -34,7 +34,6 @@ namespace T1809E_CSharp
             intArr.Add(2);
             intArr.Add(3);
             intArr.Add(4);
-            
             List<string> strArr = new List<string>();
             strArr.Add("hello");
             strArr.Add("world");

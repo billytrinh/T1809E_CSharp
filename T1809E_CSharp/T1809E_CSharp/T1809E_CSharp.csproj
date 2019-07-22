@@ -8,6 +8,8 @@
     <ItemGroup>
       <Compile Remove="Program.cs" />
       <None Include="Program.cs" />
+      <Compile Remove="Max.cs" />
+      <None Include="Max.cs" />
     </ItemGroup>
 
 </Project>
