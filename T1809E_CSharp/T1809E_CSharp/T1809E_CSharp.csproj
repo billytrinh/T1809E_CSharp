@@ -10,6 +10,8 @@
       <None Include="Program.cs" />
       <Compile Remove="Max.cs" />
       <None Include="Max.cs" />
+      <Compile Remove="Prime.cs" />
+      <None Include="Prime.cs" />
     </ItemGroup>
 
 </Project>
