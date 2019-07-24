@@ -8,11 +8,16 @@ namespace T1809E_CSharp
         static void Main(string[] args)
         {
             List<Student> stList = new List<Student>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 stList.Add(new Student());
             }
-            Student st = new Student(6);
+
+            foreach (Student student in stList)
+            {
+                student.ShowInfo();
+            }
+            Student st = new Student();
            // st.name = Console.ReadLine();
           //  st.age = Convert.ToInt32(Console.ReadLine());
             st.ShowInfo(5);

@@ -13,9 +13,9 @@ namespace T1809E_CSharp
             age = Convert.ToInt32(Console.ReadLine());
         }
 
-        public Student(int age)
+        public Student(string name,int age)
         {
-            name = Console.ReadLine();
+            this.name = name;
             this.age = age;
         }
         
