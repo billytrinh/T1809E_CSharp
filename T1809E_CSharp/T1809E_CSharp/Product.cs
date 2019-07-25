@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace T1809E_CSharp
 {
-    public class Product
+    public  class Product
     {
         public int id;
         public string name;
@@ -30,14 +30,79 @@ namespace T1809E_CSharp
             this.gallery = new List<string>();
         }
 
-        public void getInfo()
+        public string this[int index]
         {
+            get
+            {
+                return "aaaa"+gallery[index];
+            }
+            set
+            {
+                if (value.Length > 10)
+                {
+                    gallery[index] = value;
+                }
+            }
+        }
+            
+        public int Id
+        {
+            get => id;
+            set => id = value;
+        }
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public decimal Price
+        {
+            get => price;
+            set => price = value;
+        }
+
+        public int Qty
+        {
+            get => qty;
+            set => qty = value;
+        }
+
+        public string Image
+        {
+            get => image;
+            set => image = value;
+        }
+
+        public string Desc
+        {
+            get => desc;
+            set => desc = value;
+        }
+
+        public virtual void TinhTien()
+        {
+            Product p = new Product();
+            p.gallery.Add("helloworld");
+            p.gallery.Add("goodmorning");
+            
+            Console.WriteLine(p.gallery[0]);
+            Console.WriteLine(p[0]);
+            p.gallery[1] = "hahaha";
+            p[1] = "abcxyz";
+        }
+
+        public virtual void GetInfo()
+        {
+            
             Console.WriteLine("id: "+id);
             Console.WriteLine("name: "+name);
             Console.WriteLine("price: "+price);
             Console.WriteLine("qty: "+qty);
-            Console.WriteLine("image: "+image);
+            Console.WriteLine("image: "+ this.Image);
             Console.WriteLine("desc: "+desc);
+            this.Image = "abcxyz";
             foreach (string s in gallery)
             {
                 Console.WriteLine(s);
