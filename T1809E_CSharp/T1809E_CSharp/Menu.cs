@@ -16,28 +16,22 @@ namespace T1809E_CSharp
                 switch (menu)
                 {
                     case 1: InsertNews(list);break;
-                    case 2: ListNews(list);break;
-                    case 3: AvgRate(list);break;
+                    case 2: AvgAndView(list);break;
+                    case 3: AvgAndView(list,true);break;
                     case 4:
                         start = false;break;
                 }
             }
         }
 
-        static void AvgRate(List<News> list)
-        {
-            foreach (News news in list)
-            {    
-                news.Calculate();
-                news.Display();
-            }
-        }
-        
-        
-        static void ListNews(List<News> list)
+        static void AvgAndView(List<News> list, bool func = false)
         {
             foreach (News news in list)
             {
+                if (func)
+                {
+                    news.Calculate();
+                }
                 news.Display();
             }
         }
