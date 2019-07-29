@@ -6,7 +6,7 @@ namespace T1809E_CSharp
     {
         public List<PhoneNumber> PhoneList;
         
-        public override bool insertPhone(string name, string phone)
+        public override bool InsertPhone(string name, string phone)
         {
             foreach (PhoneNumber p in PhoneList)
             {
@@ -25,7 +25,7 @@ namespace T1809E_CSharp
             return true;
         }
 
-        public override bool removePhone(string name)
+        public override bool RemovePhone(string name)
         {
             foreach (PhoneNumber p in PhoneList)
             {
@@ -39,7 +39,7 @@ namespace T1809E_CSharp
             return false;
         }
 
-        public override bool updatePhone(string name, string newphone)
+        public override bool UpdatePhone(string name, string newphone)
         {
             foreach (PhoneNumber p in PhoneList)
             {
@@ -53,7 +53,7 @@ namespace T1809E_CSharp
             return false;
         }
 
-        public override PhoneNumber searchPhone(string name)
+        public override PhoneNumber SearchPhone(string name)
         {
             foreach (PhoneNumber p in PhoneList)
             {
