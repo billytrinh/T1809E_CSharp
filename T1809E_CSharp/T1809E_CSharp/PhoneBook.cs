@@ -1,13 +1,22 @@
+using System;
 using System.Collections.Generic;
 
 namespace T1809E_CSharp
 {
+    public delegate void ChangeValue(string s);
+    
     public class PhoneBook : Phone
     {
+        public event ChangeValue PhoneChange;
+        
         public List<PhoneNumber> PhoneList;
         
         public override bool InsertPhone(string name, string phone)
         {
+            if (PhoneList == null)
+            {
+                PhoneList = new List<PhoneNumber>();
+            }
             foreach (PhoneNumber p in PhoneList)
             {
                 if (p.Name.Equals(name))
@@ -46,11 +55,21 @@ namespace T1809E_CSharp
                 if (p.Name.Equals(name))
                 {
                     p.Phone = newphone;
+                    if (PhoneChange == null)
+                    {
+                        PhoneChange += Notify;
+                    }
+                    PhoneChange("So dien thoai cua "+ name +" da bi thay doi");
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public static void Notify(string s)
+        {
+            Console.WriteLine(s);
         }
 
         public override PhoneNumber SearchPhone(string name)
