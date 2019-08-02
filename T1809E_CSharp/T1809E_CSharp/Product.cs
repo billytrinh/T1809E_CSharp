@@ -13,6 +13,9 @@ namespace T1809E_CSharp
         public string desc;
         public List<string> gallery;
 
+        private event Notification ShowNotifyWhenChangePrice;
+        private event Notification ShowNotifyWhenChangeQty;
+        
         public Product()
         {
             this.gallery = new List<string>();
@@ -60,13 +63,38 @@ namespace T1809E_CSharp
         public decimal Price
         {
             get => price;
-            set => price = value;
+            set
+            {
+                
+                if (ShowNotifyWhenChangePrice == null)
+                {
+                    ShowNotifyWhenChangePrice += Cart.ShowNotification;
+                }
+
+                if (this.Price != value && this.Price != 0)
+                {
+                    ShowNotifyWhenChangePrice("Gia da duoc cap nhat");
+                }
+                price = value;
+            }
         }
 
         public int Qty
         {
             get => qty;
-            set => qty = value;
+            set
+            {
+                if (ShowNotifyWhenChangeQty == null)
+                {
+                    ShowNotifyWhenChangeQty += Cart.ShowNotification;
+                }
+
+                if (this.Qty != value && this.Qty != 0)
+                {
+                    ShowNotifyWhenChangeQty("So luong sp moi duoc cap nhat");
+                }
+                qty = value;
+            }
         }
 
         public string Image

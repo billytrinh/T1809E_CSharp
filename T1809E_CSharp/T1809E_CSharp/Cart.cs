@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace T1809E_CSharp
 {
+    public delegate void Notification(string s);
     public class Cart
     {
         public int id;
@@ -12,6 +13,13 @@ namespace T1809E_CSharp
         public string city;
         public string country;
 
+        private event Notification NotifyWhenAddProduct;
+
+        public static void ShowNotification(string s)
+        {
+            Console.WriteLine(s);
+        }
+        
         public bool AddProduct(Product p)
         {
             if (!productList.Contains(p) && p.CheckQty())
@@ -19,6 +27,11 @@ namespace T1809E_CSharp
                 productList.Add(p);
                 p.qty--;
                 grandTotal += p.price;
+                if (NotifyWhenAddProduct == null)
+                {
+                    NotifyWhenAddProduct += ShowNotification;
+                }
+                NotifyWhenAddProduct("San pham da duoc them vao gio hang");
                 return true;
             }
             Console.WriteLine("san pham da co trong gio hang");
