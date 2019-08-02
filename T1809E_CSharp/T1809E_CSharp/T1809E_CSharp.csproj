@@ -16,6 +16,8 @@
       <None Include="Fibonaci.cs" />
       <Compile Remove="Menu.cs" />
       <None Include="Menu.cs" />
+      <Compile Remove="Session5.cs" />
+      <None Include="Session5.cs" />
     </ItemGroup>
 
 </Project>
