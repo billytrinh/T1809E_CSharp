@@ -5,8 +5,27 @@ namespace T1809E_CSharp
 {
     public class Session6
     {
-        
+
         public static void Main(string[] args)
+        {
+            Thread t = new Thread(
+                delegate()
+                {    
+                    for (int i = 9; i >= 0; i--)
+                    {
+                        for (int j = 59; j >= 0; j--)
+                        {
+                           Console.WriteLine(i.ToString("D2")+":"+j.ToString("D2"));
+                           Thread.Sleep(100);
+                        }
+                    }
+                    Console.WriteLine("Boom.....");
+                }
+            );
+            t.Start();
+        }
+        
+        public static void Main2(string[] args)
         {
             Thread t1 = new Thread(SayHello2);
             t1.Start("abc xyz");
