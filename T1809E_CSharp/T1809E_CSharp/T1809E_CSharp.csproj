@@ -18,6 +18,8 @@
       <None Include="Menu.cs" />
       <Compile Remove="Session5.cs" />
       <None Include="Session5.cs" />
+      <Compile Remove="Session6.cs" />
+      <None Include="Session6.cs" />
     </ItemGroup>
 
 </Project>
