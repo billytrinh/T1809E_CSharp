@@ -20,6 +20,8 @@
       <None Include="Session5.cs" />
       <Compile Remove="Session6.cs" />
       <None Include="Session6.cs" />
+      <Compile Remove="Session7.cs" />
+      <None Include="Session7.cs" />
     </ItemGroup>
 
 </Project>
