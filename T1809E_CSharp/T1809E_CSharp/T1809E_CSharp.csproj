@@ -22,6 +22,8 @@
       <None Include="Session6.cs" />
       <Compile Remove="Session7.cs" />
       <None Include="Session7.cs" />
+      <Compile Remove="Assignment6.cs" />
+      <None Include="Assignment6.cs" />
     </ItemGroup>
 
 </Project>

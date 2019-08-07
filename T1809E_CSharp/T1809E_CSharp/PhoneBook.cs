@@ -9,34 +9,41 @@ namespace T1809E_CSharp
     {
         public event ChangeValue PhoneChange;
         
-        public List<PhoneNumber> PhoneList;
+        public List<PhoneNumber<List<string>>> PhoneList;
         
         public override bool InsertPhone(string name, string phone)
         {
             if (PhoneList == null)
             {
-                PhoneList = new List<PhoneNumber>();
+                PhoneList = new List<PhoneNumber<List<string>>>();
             }
-            foreach (PhoneNumber p in PhoneList)
+            foreach (PhoneNumber<List<string>> p in PhoneList)
             {
                 if (p.Name.Equals(name))
                 {
-                    if (!p.Phone.Equals(phone))
+//                    if (!p.Phone.Equals(phone))
+//                    {
+//                        p.Phone += ":" + phone;
+//                        return true;
+//                    }
+                    if (!p.Phone.Contains(phone))
                     {
-                        p.Phone += ":" + phone;
+                        p.Phone.Add(phone);
                         return true;
-                    }
+                    }  
 
                     return false;
                 }
             }
-            PhoneList.Add(new PhoneNumber(name,phone));
+            List<string> ls = new List<string>();
+            ls.Add(phone);
+            PhoneList.Add(new PhoneNumber<List<string>>(name,ls));
             return true;
         }
 
         public override bool RemovePhone(string name)
         {
-            foreach (PhoneNumber p in PhoneList)
+            foreach (PhoneNumber<List<string>> p in PhoneList)
             {
                 if (p.Name.Equals(name))
                 {
@@ -48,13 +55,18 @@ namespace T1809E_CSharp
             return false;
         }
 
-        public override bool UpdatePhone(string name, string newphone)
+        public override bool UpdatePhone(string name,string oldphone, string newphone)
         {
-            foreach (PhoneNumber p in PhoneList)
+            foreach (PhoneNumber<List<string>> p in PhoneList)
             {
                 if (p.Name.Equals(name))
                 {
-                    p.Phone = newphone;
+                    //p.Phone = newphone;
+                    if (p.Phone.Contains(oldphone))
+                    {
+                        p.Phone.Remove(oldphone);
+                    }
+                    p.Phone.Add(newphone);
                     if (PhoneChange == null)
                     {
                         PhoneChange += Notify;
@@ -72,9 +84,9 @@ namespace T1809E_CSharp
             Console.WriteLine(s);
         }
 
-        public override PhoneNumber SearchPhone(string name)
+        public override PhoneNumber<List<string>> SearchPhone(string name)
         {
-            foreach (PhoneNumber p in PhoneList)
+            foreach (PhoneNumber<List<string>> p in PhoneList)
             {
                 if (p.Name.Equals(name))
                 {

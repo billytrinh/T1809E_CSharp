@@ -1,11 +1,11 @@
 namespace T1809E_CSharp
 {
-    public class PhoneNumber
+    public class PhoneNumber<X>
     {    
         private string name;
-        private string phone;
+        private X phone;
 
-        public PhoneNumber(string name, string phone)
+        public PhoneNumber(string name, X phone)
         {
             this.name = name;
             this.phone = phone;
@@ -17,7 +17,7 @@ namespace T1809E_CSharp
             set => name = value;
         }
 
-        public string Phone
+        public X Phone
         {
             get => phone;
             set => phone = value;
